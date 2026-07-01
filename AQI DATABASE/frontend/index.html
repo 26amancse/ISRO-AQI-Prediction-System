@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ISRO AQI Dashboard</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- ===================================== -->
+<!-- NAVBAR -->
+<!-- ===================================== -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <span class="blue">AQ</span><span class="green">I</span>
+
+        </div>
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                id="searchBox"
+                type="text"
+                placeholder="Search city (Coming Soon)">
+
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#">Home</a>
+
+            <a href="#">Forecast</a>
+
+            <a href="#">About</a>
+
+        </div>
+
+        <button class="login-btn">
+
+            ISRO Hackathon
+
+        </button>
+
+    </nav>
+
+</header>
+
+<!-- ===================================== -->
+<!-- MAP -->
+<!-- ===================================== -->
+
+<section class="map-section">
+
+    <div id="map"></div>
+
+</section>
+<!-- ===================================== -->
+<!-- MAIN DASHBOARD -->
+<!-- ===================================== -->
+
+<section class="dashboard">
+
+    <div class="dashboard-card">
+
+        <!-- LEFT PANEL -->
+
+        <div class="left-panel">
+
+            <h1>
+
+                Real-Time Air Quality Index (AQI)
+
+            </h1>
+
+            <h2 id="cityName">
+
+                Delhi, India
+
+            </h2>
+
+            <p class="updated">
+
+                Last Updated :
+
+                <span id="time">
+
+                    Loading...
+
+                </span>
+
+            </p>
+
+            <div class="aqi-row">
+
+                <!-- AQI CIRCLE -->
+
+                <div class="aqi-circle">
+
+                    <h1 id="aqiValue">
+
+                        --
+
+                    </h1>
+
+                    <span>
+
+                        AQI
+
+                    </span>
+
+                </div>
+
+                <!-- AQI STATUS -->
+
+                <div class="status">
+
+                    <h2>
+
+                        Air Quality
+
+                    </h2>
+
+                    <span id="aqiStatus">
+
+                        Loading...
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- PROGRESS BAR -->
+
+            <div class="progress">
+
+                <div class="progress-bar"></div>
+
+            </div>
+
+        </div>
+
+        <!-- CENTER PANEL -->
+
+        <div class="center-panel">
+
+            <img
+                id="aqiCharacter"
+                src="assets/boy.png"
+                alt="AQI Character">
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+
+        <div class="right-panel">
+
+            <div class="weather-card">
+
+                <i class="fa-solid fa-cloud-sun weather-icon"></i>
+
+                <h1 id="temperature">
+
+                    --
+
+                </h1>
+
+                <p id="weatherText">
+
+                    Live Weather
+
+                </p>
+
+                <div class="weather-grid">
+
+                    <div>
+
+                        Humidity
+
+                        <h3 id="humidity">
+
+                            --
+
+                        </h3>
+
+                    </div>
+
+                    <div>
+
+                        Wind
+
+                        <h3 id="wind">
+
+                            --
+
+                        </h3>
+
+                    </div>
+
+                    <div>
+
+                        Pressure
+
+                        <h3 id="pressure">
+
+                            --
+
+                        </h3>
+
+                    </div>
+
+                    <div>
+
+                        Dew Point
+
+                        <h3 id="dewpoint">
+
+                            --
+
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ===================================== -->
+<!-- LIVE POLLUTANTS -->
+<!-- ===================================== -->
+
+<section class="pollutants">
+
+    <div class="section-title">
+
+        <h2>
+
+            Live Pollutant Concentrations
+
+        </h2>
+
+        <p>
+
+            Data from Sentinel-5P, MODIS & ERA5-Land
+
+        </p>
+
+    </div>
+
+    <div class="pollutant-grid">
+
+        <!-- AQI -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-gauge-high"></i>
+
+            <h3>AQI</h3>
+
+            <h1 id="aqiCard">--</h1>
+
+        </div>
+
+        <!-- HCHO -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-flask"></i>
+
+            <h3>HCHO</h3>
+
+            <h1 id="hcho">--</h1>
+
+        </div>
+
+        <!-- NO2 -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-industry"></i>
+
+            <h3>NO₂</h3>
+
+            <h1 id="no2">--</h1>
+
+        </div>
+
+        <!-- CO -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-smog"></i>
+
+            <h3>CO</h3>
+
+            <h1 id="co">--</h1>
+
+        </div>
+
+        <!-- SO2 -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-cloud"></i>
+
+            <h3>SO₂</h3>
+
+            <h1 id="so2">--</h1>
+
+        </div>
+
+        <!-- AOD -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-earth-asia"></i>
+
+            <h3>AOD</h3>
+
+            <h1 id="aod">--</h1>
+
+        </div>
+
+        <!-- Temperature -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-temperature-three-quarters"></i>
+
+            <h3>Temperature</h3>
+
+            <h1 id="tempCard">--</h1>
+
+        </div>
+
+        <!-- Pressure -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-compress"></i>
+
+            <h3>Pressure</h3>
+
+            <h1 id="pressureCard">--</h1>
+
+        </div>
+
+        <!-- Wind -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-wind"></i>
+
+            <h3>Wind Speed</h3>
+
+            <h1 id="windCard">--</h1>
+
+        </div>
+
+        <!-- Dew Point -->
+
+        <div class="pollutant-card">
+
+            <i class="fa-solid fa-droplet"></i>
+
+            <h3>Dew Point</h3>
+
+            <h1 id="dewPointCard">--</h1>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ===================================== -->
+<!-- AQI FORECAST -->
+<!-- ===================================== -->
+
+<section class="forecast">
+
+    <div class="forecast-card">
+
+        <div class="section-title">
+
+            <h2>
+
+                7-Day AQI Forecast
+
+            </h2>
+
+            <p>
+
+                AI Prediction based on Satellite & Weather Data
+
+            </p>
+
+        </div>
+
+        <canvas id="forecastChart"></canvas>
+
+    </div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- HEALTH RECOMMENDATION -->
+<!-- ===================================== -->
+
+<section class="health-section">
+
+    <div class="health-card">
+
+        <h2>
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            Health Recommendation
+
+        </h2>
+
+        <p id="healthMessage">
+
+            Loading health recommendation...
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- AQI SCALE -->
+<!-- ===================================== -->
+
+<section class="aqi-scale">
+
+    <div class="section-title">
+
+        <h2>
+
+            AQI Category Scale
+
+        </h2>
+
+        <p>
+
+            Standard Air Quality Index Categories
+
+        </p>
+
+    </div>
+
+    <div class="scale-container">
+
+        <div class="scale good">
+
+            <span>0 - 50</span>
+
+            <h3>Good</h3>
+
+        </div>
+
+        <div class="scale satisfactory">
+
+            <span>51 - 100</span>
+
+            <h3>Satisfactory</h3>
+
+        </div>
+
+        <div class="scale moderate">
+
+            <span>101 - 200</span>
+
+            <h3>Moderate</h3>
+
+        </div>
+
+        <div class="scale poor">
+
+            <span>201 - 300</span>
+
+            <h3>Poor</h3>
+
+        </div>
+
+        <div class="scale verypoor">
+
+            <span>301 - 400</span>
+
+            <h3>Very Poor</h3>
+
+        </div>
+
+        <div class="scale severe">
+
+            <span>401 - 500</span>
+
+            <h3>Severe</h3>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ===================================== -->
+<!-- FOOTER -->
+<!-- ===================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+
+            ISRO AQI Dashboard
+
+        </h2>
+
+        <p>
+
+            AI-Based Air Quality Prediction using
+            Sentinel-5P, MODIS & ERA5-Land
+
+        </p>
+
+        <p>
+
+            Developed for ISRO Hackathon 2026
+
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- ===================================== -->
+<!-- JAVASCRIPT LIBRARIES -->
+<!-- ===================================== -->
+
+<!-- Chart.js -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Leaflet -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

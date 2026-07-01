@@ -1,0 +1,1142 @@
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:#0b1220;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================================================
+   COLORS
+========================================================== */
+
+:root{
+
+    --primary:#00d4ff;
+
+    --green:#22c55e;
+
+    --yellow:#facc15;
+
+    --orange:#fb923c;
+
+    --red:#ef4444;
+
+    --dark:#111827;
+
+    --card:#162033;
+
+    --border:#26314d;
+
+    --text:#ffffff;
+
+    --muted:#94a3b8;
+
+}
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+.navbar{
+
+    width:100%;
+
+    height:75px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 50px;
+
+    background:#111827;
+
+    border-bottom:1px solid var(--border);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.logo{
+
+    font-size:32px;
+
+    font-weight:700;
+
+}
+
+.blue{
+
+    color:#00d4ff;
+
+}
+
+.green{
+
+    color:#22c55e;
+
+}
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+.search-box{
+
+    width:430px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#1f2937;
+
+    border-radius:50px;
+
+    padding:0 20px;
+
+}
+
+.search-box i{
+
+    color:#94a3b8;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    margin-left:15px;
+
+    background:transparent;
+
+    border:none;
+
+    outline:none;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+.search-box input::placeholder{
+
+    color:#6b7280;
+
+}
+
+/* ==========================================================
+   NAVIGATION
+========================================================== */
+
+.nav-links{
+
+    display:flex;
+
+    gap:30px;
+
+}
+
+.nav-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:var(--primary);
+
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.login-btn{
+
+    border:none;
+
+    background:var(--primary);
+
+    color:#000;
+
+    font-weight:600;
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ==========================================================
+   MAP
+========================================================== */
+
+.map-section{
+
+    width:100%;
+
+    height:420px;
+
+}
+
+#map{
+
+    width:100%;
+
+    height:100%;
+
+}
+/* ==========================================================
+   DASHBOARD
+========================================================== */
+
+.dashboard{
+
+    width:100%;
+
+    padding:45px 60px;
+
+}
+
+.dashboard-card{
+
+    display:grid;
+
+    grid-template-columns:1.2fr .8fr 1fr;
+
+    gap:30px;
+
+    background:#162033;
+
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:35px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+/* ==========================================================
+   LEFT PANEL
+========================================================== */
+
+.left-panel h1{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.left-panel h2{
+
+    font-size:22px;
+
+    color:#d1d5db;
+
+}
+
+.updated{
+
+    margin-top:12px;
+
+    margin-bottom:25px;
+
+    color:var(--muted);
+
+}
+
+/* ==========================================================
+   AQI ROW
+========================================================== */
+
+.aqi-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:35px;
+
+}
+
+/* ==========================================================
+   AQI CIRCLE
+========================================================== */
+
+.aqi-circle{
+
+    width:190px;
+
+    height:190px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+
+    color:white;
+
+    animation:pulse 2.5s infinite;
+
+}
+
+.aqi-circle h1{
+
+    font-size:64px;
+
+    font-weight:700;
+
+}
+
+.aqi-circle span{
+
+    margin-top:10px;
+
+    font-size:18px;
+
+}
+
+/* ==========================================================
+   AQI STATUS
+========================================================== */
+
+.status{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.status h2{
+
+    font-size:24px;
+
+}
+
+.status span{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    background:#22c55e;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   PROGRESS BAR
+========================================================== */
+
+.progress{
+
+    width:100%;
+
+    height:14px;
+
+    margin-top:35px;
+
+    background:#0f172a;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+}
+
+.progress-bar{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #22c55e,
+        #84cc16,
+        #f59e0b,
+        #ef4444
+    );
+
+    transition:1s;
+
+}
+
+/* ==========================================================
+   CENTER PANEL
+========================================================== */
+
+.center-panel{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#aqiCharacter{
+
+    width:260px;
+
+    max-width:100%;
+
+    animation:float 4s ease-in-out infinite;
+
+}
+
+/* ==========================================================
+   WEATHER CARD
+========================================================== */
+
+.weather-card{
+
+    background:#1d2942;
+
+    border-radius:22px;
+
+    border:1px solid #334155;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+.weather-icon{
+
+    font-size:55px;
+
+    color:#38bdf8;
+
+    margin-bottom:15px;
+
+}
+
+.weather-card h1{
+
+    font-size:48px;
+
+    margin-bottom:10px;
+
+}
+
+.weather-card p{
+
+    color:#cbd5e1;
+
+    margin-bottom:20px;
+
+}
+
+/* ==========================================================
+   WEATHER GRID
+========================================================== */
+
+.weather-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+}
+
+.weather-grid div{
+
+    background:#111827;
+
+    padding:18px;
+
+    border-radius:15px;
+
+}
+
+.weather-grid h3{
+
+    margin-top:10px;
+
+    color:#00d4ff;
+
+    font-size:22px;
+
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes pulse{
+
+    0%{
+
+        box-shadow:0 0 15px rgba(34,197,94,.4);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 40px rgba(34,197,94,.9);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 15px rgba(34,197,94,.4);
+
+    }
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+/* ==========================================================
+   POLLUTANTS SECTION
+========================================================== */
+
+.pollutants{
+
+    width:100%;
+
+    padding:60px;
+
+}
+
+/* ==========================================================
+   SECTION TITLE
+========================================================== */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.section-title h2{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.section-title p{
+
+    color:var(--muted);
+
+    font-size:16px;
+
+}
+
+/* ==========================================================
+   POLLUTANT GRID
+========================================================== */
+
+.pollutant-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+/* ==========================================================
+   POLLUTANT CARD
+========================================================== */
+
+.pollutant-card{
+
+    background:#162033;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.25);
+
+}
+
+.pollutant-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#00d4ff;
+
+    box-shadow:0 15px 35px rgba(0,212,255,.2);
+
+}
+
+.pollutant-card i{
+
+    font-size:40px;
+
+    color:#00d4ff;
+
+    margin-bottom:18px;
+
+}
+
+.pollutant-card h3{
+
+    color:#cbd5e1;
+
+    margin-bottom:12px;
+
+}
+
+.pollutant-card h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    word-break:break-word;
+
+}
+
+/* ==========================================================
+   FORECAST
+========================================================== */
+
+.forecast{
+
+    width:100%;
+
+    padding:60px;
+
+}
+
+.forecast-card{
+
+    background:#162033;
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:30px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.30);
+
+}
+
+#forecastChart{
+
+    width:100% !important;
+
+    height:420px !important;
+
+}
+
+/* ==========================================================
+   HEALTH SECTION
+========================================================== */
+
+.health-section{
+
+    width:100%;
+
+    padding:20px 60px 60px;
+
+}
+
+.health-card{
+
+    background:linear-gradient(
+        135deg,
+        #0f766e,
+        #134e4a
+    );
+
+    border-radius:22px;
+
+    padding:35px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.health-card h2{
+
+    font-size:30px;
+
+    margin-bottom:20px;
+
+}
+
+.health-card h2 i{
+
+    margin-right:12px;
+
+}
+
+.health-card p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================================
+   FADE UP ANIMATION
+========================================================== */
+
+.pollutant-card,
+.forecast-card,
+.health-card{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+/* ==========================================================
+   AQI SCALE
+========================================================== */
+
+.aqi-scale{
+
+    width:100%;
+
+    padding:60px;
+
+}
+
+.scale-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(6,1fr);
+
+    gap:20px;
+
+}
+
+.scale{
+
+    padding:25px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.scale:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.35);
+
+}
+
+.scale span{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+}
+
+.scale h3{
+
+    font-size:20px;
+
+}
+
+/* AQI COLORS */
+
+.good{
+
+    background:#16a34a;
+
+}
+
+.satisfactory{
+
+    background:#84cc16;
+
+}
+
+.moderate{
+
+    background:#f59e0b;
+
+}
+
+.poor{
+
+    background:#fb923c;
+
+}
+
+.verypoor{
+
+    background:#ef4444;
+
+}
+
+.severe{
+
+    background:#7f1d1d;
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer{
+
+    background:#111827;
+
+    border-top:1px solid var(--border);
+
+    padding:45px;
+
+    text-align:center;
+
+    margin-top:60px;
+
+}
+
+.footer-content h2{
+
+    color:#00d4ff;
+
+    margin-bottom:15px;
+
+}
+
+.footer-content p{
+
+    color:#94a3b8;
+
+    margin:8px 0;
+
+}
+
+/* ==========================================================
+   CUSTOM SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111827;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#00d4ff;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#22c55e;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:1200px){
+
+.dashboard-card{
+
+grid-template-columns:1fr;
+
+}
+
+.center-panel{
+
+order:-1;
+
+}
+
+.scale-container{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+@media(max-width:900px){
+
+.navbar{
+
+flex-direction:column;
+
+height:auto;
+
+padding:20px;
+
+gap:20px;
+
+}
+
+.search-box{
+
+width:100%;
+
+}
+
+.nav-links{
+
+display:none;
+
+}
+
+.dashboard,
+.pollutants,
+.forecast,
+.health-section,
+.aqi-scale{
+
+padding:25px;
+
+}
+
+.weather-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.scale-container{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:600px){
+
+.dashboard-card{
+
+padding:20px;
+
+}
+
+.aqi-circle{
+
+width:150px;
+
+height:150px;
+
+}
+
+.aqi-circle h1{
+
+font-size:48px;
+
+}
+
+.left-panel h1{
+
+font-size:26px;
+
+}
+
+.weather-card h1{
+
+font-size:40px;
+
+}
+
+.pollutant-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.scale-container{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/* ==========================================================
+   PAGE FADE
+========================================================== */
+
+body{
+
+    animation:fadeBody .8s ease;
+
+}
+
+@keyframes fadeBody{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+/* ==========================================================
+   SMOOTH TRANSITIONS
+========================================================== */
+
+button,
+a,
+.pollutant-card,
+.weather-card,
+.dashboard-card,
+.scale{
+
+    transition:.3s ease;
+
+}
